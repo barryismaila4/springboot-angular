@@ -1,37 +1,35 @@
 package com.danceApi.danceApi.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import jakarta.persistence.*;
+
+
+
+import java.util.Set;
 
 @Entity
+@Table(name = "dance_school")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DanceSchool {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
-
     private String localisation;
-
-    private String opentime;
-
-    private String closetime;
-
-    @Column(nullable = false, unique = true)
-    private String numero;
+    private String openTime;
+    private String closeTime;
 
     @ManyToOne
-    @JoinColumn(name = "dance_category_id", nullable = false)
+    @JoinColumn(name = "dance_category_id")
     private DanceCategory danceCategory;
 
-    @OneToMany(mappedBy = "danceSchool", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Course> courses;
+    @OneToMany(mappedBy = "danceSchool", cascade = CascadeType.ALL)
+    private Set<Course> courses;
 }

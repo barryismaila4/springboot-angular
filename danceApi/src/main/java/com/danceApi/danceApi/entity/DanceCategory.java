@@ -5,20 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+
+import java.util.Set;
 
 @Entity
+@Table(name = "dance_category")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DanceCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "danceCategory", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DanceSchool> danceSchools;
+    @OneToMany(mappedBy = "danceCategory", cascade = CascadeType.ALL)
+    private Set<DanceSchool> danceSchools;
 }
