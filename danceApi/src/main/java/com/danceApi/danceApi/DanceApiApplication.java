@@ -1,13 +1,13 @@
-package com.danceApi.danceApi;
+package com.danceapi.danceapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DanceApiApplication {
+public class DanceapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DanceApiApplication.class, args);
+		SpringApplication.run(DanceapiApplication.class, args);
 	}
 
 }

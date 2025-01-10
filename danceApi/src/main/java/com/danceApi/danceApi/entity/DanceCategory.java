@@ -1,26 +1,56 @@
-package com.danceApi.danceApi.entity;
+package com.danceapi.danceapi.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "dance_category")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class DanceCategory {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // Identifiant unique pour la catégorie de danse
 
-    private String name;
+    private String name; // Nom de la catégorie de danse
 
-    @OneToMany(mappedBy = "danceCategory", cascade = CascadeType.ALL)
-    private Set<DanceSchool> danceSchools;
+    @OneToMany(mappedBy = "danceCategory")
+    private List<DanceSchool> danceSchools; // Liste des écoles de danse associées à cette catégorie
+
+    @OneToMany(mappedBy = "danceCategory")
+    private List<Course> courses; // Liste des cours associés à cette catégorie
+
+    // Constructeur sans arguments
+    public DanceCategory() {
+    }
+
+    // Getters et Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<DanceSchool> getDanceSchools() {
+        return danceSchools;
+    }
+
+    public void setDanceSchools(List<DanceSchool> danceSchools) {
+        this.danceSchools = danceSchools;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 }

@@ -1,10 +1,13 @@
-package com.danceApi.danceApi.repository;
+package com.danceapi.danceapi.repository;
 
-import com.danceApi.danceApi.entity.DanceSchool;
+import com.danceapi.danceapi.entity.DanceSchool;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface DanceSchoolRepository extends JpaRepository<DanceSchool, Long> {
-    // Vous pouvez ajouter des méthodes de requête personnalisées ici si nécessaire
+    List<DanceSchool> findByDanceCategoryId(Long danceCategoryId);
+    // Vous pouvez ajouter d'autres méthodes personnalisées ici si nécessaire
 }
