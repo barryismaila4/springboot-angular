@@ -1,11 +1,15 @@
-/* src/app/cruds/Danceschool/listschool/listschool.component.css */
+/* src/app/cruds/Course/course-list/course-list.component.css */
 .container {
     margin-top: 20px;
+    padding: 20px;
   }
   
   h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
   }
   
   .table {
@@ -65,5 +69,12 @@
   
   a.btn:hover {
     background-color: #218838;
+  }
+  
+  .table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   

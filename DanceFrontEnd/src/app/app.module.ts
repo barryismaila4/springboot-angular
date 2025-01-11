@@ -11,7 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddschoolComponent } from './cruds/Danceschool/addschool/addschool.component';
 import { UpdateschoolComponent } from './cruds/Danceschool/updateschool/updateschool.component';
-import { ListschoolComponent } from './cruds/Danceschool/listschool/listschool.component'; // Import de FormsModule
+import { ListschoolComponent } from './cruds/Danceschool/listschool/listschool.component';
+import { CourseAddComponent } from './cruds/Course/course-add/course-add.component';
+import { CourseListComponent } from './cruds/Course/course-list/course-list.component';
+import { CourseUpdateComponent } from './cruds/Course/course-update/course-update.component'; // Import de FormsModule
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ListschoolComponent } from './cruds/Danceschool/listschool/listschool.c
     MainComponent,
     AddschoolComponent,
     UpdateschoolComponent,
-    ListschoolComponent
+    ListschoolComponent,
+    CourseAddComponent,
+    CourseListComponent,
+    CourseUpdateComponent
   ],
   imports: [
     BrowserModule,
