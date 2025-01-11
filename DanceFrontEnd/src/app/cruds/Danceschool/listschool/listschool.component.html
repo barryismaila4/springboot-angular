@@ -1,0 +1,30 @@
+<!-- src/app/cruds/Danceschool/listschool/listschool.component.html -->
+<div class="container">
+    <h2>Liste des Écoles de Danse</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Horaire</th>
+          <th>Note</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let school of schools">
+          <td>{{ school.id }}</td>
+          <td>{{ school.name }}</td>
+          <td>{{ school.adresse }}</td>
+          <td>{{ school.horaire }}</td>
+          <td>{{ school.note }}</td>
+          <td>
+            <button (click)="editSchool(school.id)" class="btn btn-warning">Éditer</button>
+            <button (click)="deleteSchool(school.id)" class="btn btn-danger">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/main/schools/add" class="btn btn-primary">Ajouter une École</a>
+  </div>

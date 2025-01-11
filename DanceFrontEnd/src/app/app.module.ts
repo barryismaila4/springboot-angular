@@ -8,7 +8,10 @@ import { DanceCategoryAddComponent } from './cruds/DanceCategory/dance-category-
 import { DanceCategoryUpdateComponent } from './cruds/DanceCategory/dance-category-update/dance-category-update.component';
 import { MainComponent } from './cruds/main/main.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Import de FormsModule
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddschoolComponent } from './cruds/Danceschool/addschool/addschool.component';
+import { UpdateschoolComponent } from './cruds/Danceschool/updateschool/updateschool.component';
+import { ListschoolComponent } from './cruds/Danceschool/listschool/listschool.component'; // Import de FormsModule
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Import de 
     DanceCategoryListComponent,
     DanceCategoryAddComponent,
     DanceCategoryUpdateComponent,
-    MainComponent
+    MainComponent,
+    AddschoolComponent,
+    UpdateschoolComponent,
+    ListschoolComponent
   ],
   imports: [
     BrowserModule,
