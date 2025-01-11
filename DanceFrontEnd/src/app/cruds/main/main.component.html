@@ -1,13 +1,36 @@
-<h1>Bienvenue dans le gestionnaire des catégories de danse</h1>
+<!-- src/app/app.component.html -->
+<div class="app-container">
+  <header class="header">
+    <h1>Gestionnaire des Catégories de Danse</h1>
+  </header>
 
-<nav>
-  <ul>
-    <li><a routerLink="categories">Liste des catégories</a></li>
-    <li><a routerLink="schools">Liste des écoles de danse</a></li> <!-- Lien vers la liste des écoles -->
-    <li><a routerLink="courses">Liste des cours de danse</a></li> <!-- Lien vers la liste des cours -->
- 
-  </ul>
-</nav>
+  <div class="main-content">
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a routerLink="/main/categories" class="nav-link">Catégories</a></li>
+        <li><a routerLink="/main/schools" class="nav-link">Écoles de Danse</a></li>
+        <li><a routerLink="/main/courses" class="nav-link">Cours de Danse</a></li>
+      </ul>
+    </nav>
 
-<!-- Cette balise affichera les composants selon la route -->
-<router-outlet></router-outlet>
+    <aside class="sidebar">
+      <h3>Actions Rapides</h3>
+      <ul class="sidebar-list">
+        <li><a routerLink="/main/categories/add" class="sidebar-link">Ajouter une Catégorie</a></li>
+        <li><a routerLink="/main/schools/add" class="sidebar-link">Ajouter une École</a></li>
+        <li><a routerLink="/main/courses/add" class="sidebar-link">Ajouter un Cours</a></li>
+      </ul>
+    </aside>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; Développé par Barry Ismaïla</p>
+    <p>Email: <a href="mailto:ismaila.barry@esprit.tn">ismaila.barry@esprit.tn</a></p>
+    <p>Téléphone: <a href="tel:+21628628416">+216 28 62 84 16</a></p>
+  </footer>
+  
+</div>

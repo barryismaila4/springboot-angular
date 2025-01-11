@@ -1,0 +1,79 @@
+/* src/app/app.component.css */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .navbar {
+    background-color: #f8f9fa;
+    width: 200px;
+    padding: 15px;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .nav-list li {
+    margin: 10px 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .sidebar {
+    background-color: #e9ecef;
+    width: 200px;
+    padding: 15px;
+  }
+  
+  .sidebar-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar-list li {
+    margin: 10px 0;
+  }
+  
+  .sidebar-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .sidebar-link:hover {
+    text-decoration: underline;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
