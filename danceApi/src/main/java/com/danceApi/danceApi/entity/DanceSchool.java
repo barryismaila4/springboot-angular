@@ -1,33 +1,42 @@
 package com.danceapi.danceapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
 public class DanceSchool {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant unique pour l'école de danse
+    private Long id;
 
-    private String name; // Nom de l'école de danse
-    private String address; // Adresse de l'école de danse
-    private String openDay; // Jour d'ouverture
-    private String closeDay; // Jour de fermeture
-    private String openTime; // Heure d'ouverture
-    private String closeTime; // Heure de fermeture
+    private String name;
+    private String adresse;
+    private String horaire;
+    private Double note;
 
     @ManyToOne
     @JoinColumn(name = "dance_category_id")
-    private DanceCategory danceCategory; // Référence à la catégorie de danse
+    @JsonBackReference  // Ignorer cette référence lors de la sérialisation JSON
+    private DanceCategory danceCategory;
 
     @OneToMany(mappedBy = "danceSchool")
-    private List<Course> courses; // Liste des cours associés à cette école
+    private List<Course> courses;
 
-    // Constructeur sans arguments
-    public DanceSchool() {
+    // Constructeurs, getters, et setters
+    public DanceSchool() {}
+
+    public DanceSchool(Long id, String name, String adresse, String horaire, Double note, DanceCategory danceCategory, List<Course> courses) {
+        this.id = id;
+        this.name = name;
+        this.adresse = adresse;
+        this.horaire = horaire;
+        this.note = note;
+        this.danceCategory = danceCategory;
+        this.courses = courses;
     }
 
-    // Getters et Setters
     public Long getId() {
         return id;
     }
@@ -44,44 +53,28 @@ public class DanceSchool {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
-    public String getOpenDay() {
-        return openDay;
+    public String getHoraire() {
+        return horaire;
     }
 
-    public void setOpenDay(String openDay) {
-        this.openDay = openDay;
+    public void setHoraire(String horaire) {
+        this.horaire = horaire;
     }
 
-    public String getCloseDay() {
-        return closeDay;
+    public Double getNote() {
+        return note;
     }
 
-    public void setCloseDay(String closeDay) {
-        this.closeDay = closeDay;
-    }
-
-    public String getOpenTime() {
-        return openTime;
-    }
-
-    public void setOpenTime(String openTime) {
-        this.openTime = openTime;
-    }
-
-    public String getCloseTime() {
-        return closeTime;
-    }
-
-    public void setCloseTime(String closeTime) {
-        this.closeTime = closeTime;
+    public void setNote(Double note) {
+        this.note = note;
     }
 
     public DanceCategory getDanceCategory() {

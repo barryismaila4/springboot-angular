@@ -1,31 +1,41 @@
 package com.danceapi.danceapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant unique pour le cours
+    private Long id;
 
-    private String title; // Titre du cours
+    private String title;
 
-    @Lob // Indique que ce champ peut contenir une grande quantité de données
-    private String content; // Contenu du cours
+    @Lob
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "dance_category_id")
-    private DanceCategory danceCategory; // Référence à la catégorie de danse
+    @JsonIgnore  // Ignorer la référence à DanceCategory lors de la sérialisation JSON
+    private DanceCategory danceCategory;
 
     @ManyToOne
     @JoinColumn(name = "dance_school_id")
-    private DanceSchool danceSchool; // Référence à l'école de danse
+    @JsonIgnore  // Ignorer la référence à DanceSchool lors de la sérialisation JSON
+    private DanceSchool danceSchool;
 
-    // Constructeur sans arguments
-    public Course() {
+    // Constructeurs, getters, et setters
+    public Course() {}
+
+    public Course(Long id, String title, String content, DanceCategory danceCategory, DanceSchool danceSchool) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.danceCategory = danceCategory;
+        this.danceSchool = danceSchool;
     }
 
-    // Getters et Setters
     public Long getId() {
         return id;
     }

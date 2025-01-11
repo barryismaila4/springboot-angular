@@ -26,75 +26,123 @@ public class DanceController {
     // Endpoints pour DanceCategory
     @PostMapping("/categories")
     public ResponseEntity<DanceCategory> addDanceCategory(@RequestBody DanceCategory danceCategory) {
-        DanceCategory createdCategory = danceService.addDanceCategory(danceCategory);
-        return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
+        try {
+            DanceCategory createdCategory = danceService.addDanceCategory(danceCategory);
+            return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<Void> deleteDanceCategory(@PathVariable Long id) {
-        danceService.deleteDanceCategory(id);
-        return ResponseEntity.noContent().build();
+        try {
+            danceService.deleteDanceCategory(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/categories/{id}")
     public ResponseEntity<DanceCategory> updateDanceCategory(@PathVariable Long id, @RequestBody DanceCategory danceCategory) {
-        DanceCategory updatedCategory = danceService.updateDanceCategory(id, danceCategory);
-        return updatedCategory != null ? ResponseEntity.ok(updatedCategory) : ResponseEntity.notFound().build();
+        try {
+            DanceCategory updatedCategory = danceService.updateDanceCategory(id, danceCategory);
+            return updatedCategory != null ? ResponseEntity.ok(updatedCategory) : ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/categories")
     public ResponseEntity<List<DanceCategory>> listDanceCategories() {
-        List<DanceCategory> categories = danceService.listDanceCategories();
-        return ResponseEntity.ok(categories);
+        try {
+            List<DanceCategory> categories = danceService.listDanceCategories();
+            return ResponseEntity.ok(categories);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Endpoints pour DanceSchool
     @PostMapping("/schools")
     public ResponseEntity<DanceSchool> addDanceSchool(@RequestBody DanceSchool danceSchool) {
-        DanceSchool createdSchool = danceService.addDanceSchool(danceSchool);
-        return new ResponseEntity<>(createdSchool, HttpStatus.CREATED);
+        try {
+            DanceSchool createdSchool = danceService.addDanceSchool(danceSchool);
+            return new ResponseEntity<>(createdSchool, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @DeleteMapping("/schools/{id}")
     public ResponseEntity<Void> deleteDanceSchool(@PathVariable Long id) {
-        danceService.deleteDanceSchool(id);
-        return ResponseEntity.noContent().build();
+        try {
+            danceService.deleteDanceSchool(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/schools/{id}")
     public ResponseEntity<DanceSchool> updateDanceSchool(@PathVariable Long id, @RequestBody DanceSchool danceSchool) {
-        DanceSchool updatedSchool = danceService.updateDanceSchool(id, danceSchool);
-        return updatedSchool != null ? ResponseEntity.ok(updatedSchool) : ResponseEntity.notFound().build();
+        try {
+            DanceSchool updatedSchool = danceService.updateDanceSchool(id, danceSchool);
+            return updatedSchool != null ? ResponseEntity.ok(updatedSchool) : ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/schools")
     public ResponseEntity<List<DanceSchool>> listDanceSchools() {
-        List<DanceSchool> schools = danceService.listDanceSchools();
-        return ResponseEntity.ok(schools);
+        try {
+            List<DanceSchool> schools = danceService.listDanceSchools();
+            return ResponseEntity.ok(schools);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Endpoints pour Course
     @PostMapping("/courses")
     public ResponseEntity<Course> addCourse(@RequestBody Course course) {
-        Course createdCourse = danceService.addCourse(course);
-        return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
+        try {
+            Course createdCourse = danceService.addCourse(course);
+            return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @DeleteMapping("/courses/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
-        danceService.deleteCourse(id);
-        return ResponseEntity.noContent().build();
+        try {
+            danceService.deleteCourse(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/courses/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
-        Course updatedCourse = danceService.updateCourse(id, course);
-        return updatedCourse != null ? ResponseEntity.ok(updatedCourse) : ResponseEntity.notFound().build();
+        try {
+            Course updatedCourse = danceService.updateCourse(id, course);
+            return updatedCourse != null ? ResponseEntity.ok(updatedCourse) : ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> listCourses() {
-        List<Course> courses = danceService.listCourses();
-        return ResponseEntity.ok(courses);
+        try {
+            List<Course> courses = danceService.listCourses();
+            return ResponseEntity.ok(courses);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 }

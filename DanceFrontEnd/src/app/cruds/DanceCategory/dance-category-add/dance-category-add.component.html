@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Ajouter une Catégorie de Danse</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+    <div class="form-group">
+      <label for="name">Nom de la Catégorie</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name" 
+        class="form-control" 
+        placeholder="Entrez le nom de la catégorie" 
+      />
+      <div *ngIf="categoryForm.get('name')?.invalid && (categoryForm.get('name')?.touched || categoryForm.get('name')?.dirty)" class="text-danger">
+        <small *ngIf="categoryForm.get('name')?.errors?.['required']">Le nom de la catégorie est requis.</small>
+      </div>
+    </div>
+
+  
+
+    
+
+    <button type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid">Ajouter</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+  </form>
+</div>

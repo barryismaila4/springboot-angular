@@ -1,27 +1,31 @@
 package com.danceapi.danceapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
 public class DanceCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant unique pour la catégorie de danse
+    private Long id;
 
-    private String name; // Nom de la catégorie de danse
+    private String name;
 
-    @OneToMany(mappedBy = "danceCategory")
-    private List<DanceSchool> danceSchools; // Liste des écoles de danse associées à cette catégorie
+    @OneToMany(mappedBy = "danceCategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference  // Sérialiser cette liste
+    private List<DanceSchool> danceSchools;
 
-    @OneToMany(mappedBy = "danceCategory")
-    private List<Course> courses; // Liste des cours associés à cette catégorie
+    // Constructeurs, getters, et setters
+    public DanceCategory() {}
 
-    // Constructeur sans arguments
-    public DanceCategory() {
+    public DanceCategory(Long id, String name, List<DanceSchool> danceSchools) {
+        this.id = id;
+        this.name = name;
+        this.danceSchools = danceSchools;
     }
 
-    // Getters et Setters
     public Long getId() {
         return id;
     }
@@ -44,13 +48,5 @@ public class DanceCategory {
 
     public void setDanceSchools(List<DanceSchool> danceSchools) {
         this.danceSchools = danceSchools;
-    }
-
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
     }
 }

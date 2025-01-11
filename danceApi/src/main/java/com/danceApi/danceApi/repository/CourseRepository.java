@@ -10,5 +10,4 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByDanceSchoolId(Long danceSchoolId);
     List<Course> findByDanceCategoryId(Long danceCategoryId);
-    // Vous pouvez ajouter d'autres méthodes personnalisées ici si nécessaire
 }

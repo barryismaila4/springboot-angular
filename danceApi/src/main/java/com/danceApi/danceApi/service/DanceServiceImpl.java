@@ -27,15 +27,21 @@ public class DanceServiceImpl implements DanceService {
         this.courseRepository = courseRepository;
     }
 
-    // Méthodes pour DanceCategory
     @Override
     public DanceCategory addDanceCategory(DanceCategory danceCategory) {
+        if (danceCategory.getDanceSchools() != null) {
+            for (DanceSchool danceSchool : danceCategory.getDanceSchools()) {
+                danceSchool.setDanceCategory(danceCategory);
+            }
+        }
         return danceCategoryRepository.save(danceCategory);
     }
 
     @Override
     public void deleteDanceCategory(Long id) {
-        danceCategoryRepository.deleteById(id);
+        if (danceCategoryRepository.existsById(id)) {
+            danceCategoryRepository.deleteById(id);
+        }
     }
 
     @Override
@@ -44,7 +50,7 @@ public class DanceServiceImpl implements DanceService {
             danceCategory.setId(id);
             return danceCategoryRepository.save(danceCategory);
         }
-        return null; // Vous pouvez lancer une exception ici si nécessaire
+        return null;
     }
 
     @Override
@@ -52,7 +58,6 @@ public class DanceServiceImpl implements DanceService {
         return danceCategoryRepository.findAll();
     }
 
-    // Méthodes pour DanceSchool
     @Override
     public DanceSchool addDanceSchool(DanceSchool danceSchool) {
         return danceSchoolRepository.save(danceSchool);
@@ -60,7 +65,9 @@ public class DanceServiceImpl implements DanceService {
 
     @Override
     public void deleteDanceSchool(Long id) {
-        danceSchoolRepository.deleteById(id);
+        if (danceSchoolRepository.existsById(id)) {
+            danceSchoolRepository.deleteById(id);
+        }
     }
 
     @Override
@@ -69,7 +76,7 @@ public class DanceServiceImpl implements DanceService {
             danceSchool.setId(id);
             return danceSchoolRepository.save(danceSchool);
         }
-        return null; // Vous pouvez lancer une exception ici si nécessaire
+        return null;
     }
 
     @Override
@@ -77,7 +84,6 @@ public class DanceServiceImpl implements DanceService {
         return danceSchoolRepository.findAll();
     }
 
-    // Méthodes pour Course
     @Override
     public Course addCourse(Course course) {
         return courseRepository.save(course);
@@ -85,7 +91,9 @@ public class DanceServiceImpl implements DanceService {
 
     @Override
     public void deleteCourse(Long id) {
-        courseRepository.deleteById(id);
+        if (courseRepository.existsById(id)) {
+            courseRepository.deleteById(id);
+        }
     }
 
     @Override
@@ -94,7 +102,7 @@ public class DanceServiceImpl implements DanceService {
             course.setId(id);
             return courseRepository.save(course);
         }
-        return null; // Vous pouvez lancer une exception ici si nécessaire
+        return null;
     }
 
     @Override
